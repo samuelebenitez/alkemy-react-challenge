@@ -76,20 +76,20 @@ function App() {
     console.log(aligmentResult);
 
     aligmentResult.map((h) => {
-      if (h == "bad") {
-        bad = bad + 1;
-      } else if (h == "good") {
-        good = good + 1;
-      }
+      if (h === "bad") {
+        return (bad = bad + 1);
+      } else if (h === "good") {
+        return (good = good + 1);
+      } else null;
     });
     console.log(good, bad);
 
     if (myTeamIds.length < 6) {
-      if (hero.biography.alignment == "good" && good < 3) {
+      if (hero.biography.alignment === "good" && good < 3) {
         setMyTeamIds([...myTeamIds, hero.id]);
         setSearchedSuperhero([]);
         setShowAlignmentError(false);
-      } else if (hero.biography.alignment == "bad" && bad < 3) {
+      } else if (hero.biography.alignment === "bad" && bad < 3) {
         setMyTeamIds([...myTeamIds, hero.id]);
         setSearchedSuperhero([]);
         setShowAlignmentError(false);
@@ -102,7 +102,7 @@ function App() {
 
   function deleteHero(heroToDelete) {
     if (myTeamIds.length >= 1) {
-      const $myTeam = myTeamIds.filter((id) => id != heroToDelete.id);
+      const $myTeam = myTeamIds.filter((id) => id !== heroToDelete.id);
       setMyTeamIds($myTeam);
     }
   }
@@ -169,7 +169,6 @@ function App() {
                     <button
                       onClick={() => addHero(s)}
                       className="text-purple-200 w-15v cursor-pointer text-5xl uppercase font-bold bg-purple-600  rounded-2xl shadow-md flex  justify-center items-center pb-2"
-                      alt="agregar"
                     >
                       +
                     </button>

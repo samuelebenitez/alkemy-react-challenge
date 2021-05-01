@@ -14,10 +14,6 @@ export default function Login() {
   //OBJECT TO REDIRECT
   const history = useHistory();
 
-  // TAILWIND GENERIC CLASSES
-  const inputStyle = "";
-  const labelStyle = "";
-
   //CONVERT TO URLENCODED (fetch automatically send a urlencoded when has an object of type URLSearchParams  in the body)
   const bodyObject = new URLSearchParams({
     email: email,
@@ -57,26 +53,6 @@ export default function Login() {
   // TO REDIRECT TO HOME
   function goHome() {
     history.push("/");
-  }
-
-  //TO RENDER CLEANINPUTS BUTTON
-  function renderButtonToClean() {
-    return (
-      <button
-        onClick={cleanInputs}
-        className="text-gray-900 bg-purple-300 rounded-lg h-10 p-2 bg-purplee-600"
-      >
-        Limpiar los campos
-      </button>
-    );
-  }
-
-  //FUNCTION TO CLEANS INPUTS
-  function cleanInputs() {
-    setEmail("");
-    setPassword("");
-    setShowErrorApi(false);
-    setShowErrorEmpty(false);
   }
 
   return (

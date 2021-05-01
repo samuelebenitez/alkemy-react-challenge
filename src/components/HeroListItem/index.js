@@ -3,10 +3,8 @@ export default function HeroListItem({ hero, renderHeroInfo, deleteHero }) {
     switch (alig) {
       case "good":
         return "bg-green-300 w-screen  border-b h-40v border-purple-600 text-purple-900 p-3";
-        break;
       case "bad":
         return "bg-red-300 w-screen  border-b h-40v border-purple-600 text-purple-900 p-3";
-        break;
       case "neutral":
         return "bg-gray-400 w-screen  border-b h-40v border-purple-600 text-purple-900 p-3";
 
