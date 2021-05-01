@@ -15,8 +15,8 @@ export default function Login() {
   const history = useHistory();
 
   // TAILWIND GENERIC CLASSES
-  const inputStyle = "h-12 rounded-lg bg-purplee-100 w-full p-2";
-  const labelStyle = "text-left w-full px-1";
+  const inputStyle = "";
+  const labelStyle = "";
 
   //CONVERT TO URLENCODED (fetch automatically send a urlencoded when has an object of type URLSearchParams  in the body)
   const bodyObject = new URLSearchParams({
@@ -60,11 +60,11 @@ export default function Login() {
   }
 
   //TO RENDER CLEANINPUTS BUTTON
-  function renderButton() {
+  function renderButtonToClean() {
     return (
       <button
         onClick={cleanInputs}
-        className="text-gray-900 rounded-lg h-10 p-2 bg-purplee-600"
+        className="text-gray-900 bg-purple-300 rounded-lg h-10 p-2 bg-purplee-600"
       >
         Limpiar los campos
       </button>
@@ -83,47 +83,64 @@ export default function Login() {
     //TO VALIDATE IF TOKEN EXIST. IF ITS TRUE, GO TO HOME, IF ITS FALSE, RENDER THE LOGIN FORM
     <>
       {!window.localStorage.getItem("token") ? (
-        <div className="h-screen w-screen bg-purple-200 grid place-items-center">
-          <form
-            onSubmit={handleSubmit}
-            className="bg-purple-400 flex    flex-col w-2/3 h-3/4 justify-between items-center p-4 rounded-lg shadow-lg"
-          >
-            <label className={labelStyle} htmlFor="email">
-              EMAIL
-            </label>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              className={inputStyle}
-              type="text"
-              placeholder="Email"
-              name="email"
-              value={email}
-            />
-            <label className={labelStyle} htmlFor="password">
-              PASSWORD
-            </label>
-            <input
-              onChange={(e) => setPassword(e.target.value)}
-              className={inputStyle}
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={password}
-            />
-            {showErrorEmpty ? (
-              <p className="flex justify-between items-center w-full m-4 text-red-500">
-                Revisá que los campos estén llenos {renderButton()}
-              </p>
-            ) : null}
-            {showErrorApi ? (
-              <p className="flex justify-between items-center w-full m-4 text-red-500">
-                Ingresá información válida por favor {renderButton()}
-              </p>
-            ) : null}
-            <button className="h-14 rounded-lg bg-purple-500 w-full">
-              Entrar
-            </button>
-          </form>
+        <div className="h-100v w-100v bg-purple-400 grid place-items-center">
+          <div className="h-70v flex justify-center">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-purple-200 flex flex-col w-90v h-70v px-4 py-16 rounded-md shadow-lg"
+            >
+              <label
+                className="  mb-2 text-left text-purple-500 text-2xl w-full px-1"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setShowErrorEmpty(false);
+                  setShowErrorApi(false);
+                }}
+                className=" border-b border-purple-500
+                 h-12 mb-8   bg-purple-200 w-full py-2 px-1"
+                type="text"
+                placeholder="Email"
+                name="email"
+                value={email}
+              />
+              <label
+                className="  mb-2 text-left text-purple-500 text-2xl w-full px-1"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <input
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setShowErrorEmpty(false);
+                  setShowErrorApi(false);
+                }}
+                className="border-b border-purple-500 h-12  mb-8  bg-purple-200 w-full py-2 px-1"
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={password}
+              />
+              {showErrorEmpty ? (
+                <p className="flex justify-between items-center w-full m-1 text-red-500">
+                  Revisá que los campos estén llenos
+                </p>
+              ) : null}
+              {showErrorApi ? (
+                <p className="flex justify-between items-center w-full m-1 text-red-500">
+                  Ingresá información válida por favor
+                </p>
+              ) : null}
+              <button className="h-10v rounded-lg bg-purple-500 w-full text-purple-200 text-2xl mt-6">
+                Ingresar
+              </button>
+            </form>
+          </div>
         </div>
       ) : (
         goHome()
