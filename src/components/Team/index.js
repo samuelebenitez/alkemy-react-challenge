@@ -55,6 +55,7 @@ export default function Team({ myTeam, renderHeroInfo, deleteHero }) {
       power = power + +hero.powerstats.power;
       speed = speed + +hero.powerstats.speed;
       strength = strength + +hero.powerstats.strength;
+      return null;
     });
 
     setMyTeamPowerstats({

@@ -8,7 +8,7 @@ function App() {
   const [myTeam, setMyTeam] = useState([]);
   const [showInfo, setShowInfo] = useState(false);
   const [hero, setHero] = useState([]);
-  const [myTeamIds, setMyTeamIds] = useState([490]);
+  const [myTeamIds, setMyTeamIds] = useState([569]);
   const [showSearchError, setShowSearchError] = useState(false);
   const [showAlignmentError, setShowAlignmentError] = useState(false);
 
@@ -73,16 +73,14 @@ function App() {
     let good = 0;
     let bad = 0;
     myTeam.map((her) => aligmentResult.push(her.biography.alignment));
-    console.log(aligmentResult);
 
     aligmentResult.map((h) => {
       if (h === "bad") {
         return (bad = bad + 1);
       } else if (h === "good") {
         return (good = good + 1);
-      } else null;
+      } else return null;
     });
-    console.log(good, bad);
 
     if (myTeamIds.length < 6) {
       if (hero.biography.alignment === "good" && good < 3) {
@@ -155,7 +153,7 @@ function App() {
                       <img
                         className="w-xl"
                         src={s.image.url}
-                        alt={`${s.name} picture`}
+                        alt={`${s.name}`}
                       />
                     </div>
                     <div className="w-2/4 flex flex-col justify-center">
